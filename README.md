@@ -44,3 +44,14 @@ sudo apt-get install gdebi-core
 wget https://download2.rstudio.org/rstudio-server-1.1.456-amd64.deb
 sudo gdebi rstudio-server-1.1.456-amd64.deb
 
+#Setting up Jupyter
+##Create a ~/.jupyter/jupyter_notebook_config.py with settings
+jupyter notebook --generate-config
+jupyter notebook --port=8888 --NotebookApp.token='' # Start it
+
+##Replace 'path-to-jupyter' with the actual path to the jupyter
+##installation (run 'which jupyter' if you don't know it). Also
+##'path-to-dir' should be the dir where your deep learning notebooks 
+##would reside (I use ~/DL/)
+@reboot path-to-jupyter notebook --no-browser --port=8888 --NotebookApp.token='' --notebook-dir path-to-dir &
+
