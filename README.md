@@ -36,3 +36,11 @@ Check if:
 PATH includes /usr/local/cuda-10.0/bin
 LD_LIBRARY_PATH includes /usr/local/cuda-10.0/lib64, or, add /usr/local/cuda-10.0/lib64 to /etc/ld.so.conf and run ldconfig as root
  if not add this to .profile in home directory
+ 
+#Install RStudio server (for 64 bit)
+sudo apt-get --assume-yes update
+sudo apt-get --assume-yes install r-base
+sudo apt-get install gdebi-core
+wget https://download2.rstudio.org/rstudio-server-1.1.456-amd64.deb
+sudo gdebi rstudio-server-1.1.456-amd64.deb
+
