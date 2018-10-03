@@ -83,5 +83,6 @@ jupyter notebook --port=8888 --NotebookApp.token='' # Start it
 ##installation (run 'which jupyter' if you don't know it). Also
 ##'path-to-dir' should be the dir where your deep learning notebooks 
 ##would reside (I use ~/DL/)
+crontab -e
 @reboot path-to-jupyter notebook --no-browser --port=8888 --NotebookApp.token='' --notebook-dir path-to-dir &
 
