@@ -27,15 +27,45 @@ source ~/.bashrc
 
 
 
-Install NVIDIA drivers
+#Install NVIDIA drivers
 
 https://launchpad.net/~graphics-drivers/+archive/ubuntu/ppa
+sudo add-apt-repository ppa:graphics-drivers/ppa
+sudo apt-get update
+sudo apt-get install nvidia-390
 
+#Install CUDNN after downloading the file
 
-Check if:
-PATH includes /usr/local/cuda-10.0/bin
-LD_LIBRARY_PATH includes /usr/local/cuda-10.0/lib64, or, add /usr/local/cuda-10.0/lib64 to /etc/ld.so.conf and run ldconfig as root
- if not add this to .profile in home directory
+tar -xzf cudnn-9.0-linux-x64-v7.3.1.20.tgz
+cd cuda
+sudo cp lib64/* /usr/local/cuda/lib64/
+sudo cp include/* /usr/local/cuda/include/
+
+#Install Anaconda
+
+wget https://repo.continuum.io/archive/Anaconda3-4.3.1-Linux-x86_64.sh -O “anaconda-install.sh”
+bash anaconda-install.sh -b
+cat >> ~/.bashrc << 'EOF'
+export PATH=$HOME/anaconda3/bin:${PATH}
+EOF
+source .bashrc
+conda upgrade -y --all
+source activate root
+
+#Install TensorFlow
+
+sudo apt install python3-pip
+pip install tensorflow-gpu
+
+##Test
+git clone https://github.com/tensorflow/tensorflow.git
+python tensorflow/tensorflow/examples/tutorials/mnist/fully_connected_feed.py
+
+#Install Keras
+pip install keras
+
+#Install PyTorch
+conda install pytorch torchvision cuda80 -c soumith
  
 #Install RStudio server (for 64 bit)
 sudo apt-get --assume-yes update
