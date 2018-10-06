@@ -74,6 +74,11 @@ sudo apt-get install gdebi-core
 wget https://download2.rstudio.org/rstudio-server-1.1.456-amd64.deb
 sudo gdebi rstudio-server-1.1.456-amd64.deb
 
+#Packages installation
+sudo apt update
+sudo apt install gfortran
+##Use install.packages() in Rstudio server (user library)
+
 #Setting up Jupyter
 ##Create a ~/.jupyter/jupyter_notebook_config.py with settings
 jupyter notebook --generate-config
